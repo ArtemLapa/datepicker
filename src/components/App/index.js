@@ -1,36 +1,30 @@
 import React from "react";
 import moment from "moment";
+import styled from "styled-components";
 import Header from "../Header";
 import Monitor from "../Monitor";
 import CalendarGrid from "../CalendarGrid";
 
-function Index() {
-  window.moment = moment;
+const CalnderWrapper = styled.div`
+  border-radius: 8px;
+  border-top: 1px solid #737374;
+  border-left: 1px solid #46464B;
+  border-right: 1px solid #46464B;
+  border-bottom: 2px solid #46464B;
+  box-shadow: 0 0 0 1px #1A1A1A, 0 8px 20px 6px #888888;
+  overflow: hidden;
+`;
 
+function Index() {
   moment.updateLocale("eng", {week: {dow: 1}});
   const startDay = moment().startOf("month").startOf("week");
-  // const endDay = moment().endOf("month").endOf("week");
-
-  // const calendar = [];
-  // let day = startDay.clone();
-  //
-  // while (!day.isAfter(endDay)) {
-  //   calendar.push(day.clone());
-  //   day.add(1, "day");
-  // }
-  //
-  // console.log(calendar);
-  // window.moment = moment;
-  // window.startDay = startDay;
-  // window.endDay = endDay;
-  // window.day = day;
 
   return (
-    <div>
+    <CalnderWrapper>
       <Header />
       <Monitor />
       <CalendarGrid startDay={startDay} />
-    </div>
+    </CalnderWrapper>
   );
 }
 
