@@ -11,10 +11,22 @@ const GridWrapper = styled.div`
 `;
 
 const CellWrapper = styled.div`
-  min-width: 140px;
-  min-height: 80px;
+  min-width: 50px;
+  min-height: 25px;
   background-color: ${props => props.isWeekend ? "#272829" : "#1E1F21"};
   color: #DDDDCD;
+  @media(min-width: 576px) {
+    min-width: 75px;
+    min-height: 50px;
+  }
+  @media(min-width: 768px) {
+    min-width: 100px;
+    min-height: 60px;
+  }
+  @media(min-width: 1024px) {
+    min-width: 140px;
+    min-height: 80px;
+  }
 `;
 
 const RowInCell = styled.div`
