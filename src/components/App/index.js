@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import moment from "moment";
 import styled from "styled-components";
 import Header from "../Header";
@@ -17,14 +17,30 @@ const CalnderWrapper = styled.div`
 
 function Index() {
   moment.updateLocale("eng", {week: {dow: 1}});
-  const today = moment();
+  // const today = moment();
+  const [today, setToday] = useState(moment())
   const startDay = today.clone().startOf("month").startOf("week");
   // window.moment = moment;
+
+  const prevHandler = () => {
+    return setToday(prev => prev.clone().subtract(1, "month"));
+  }
+  const todayHandler = () => {
+    return setToday(moment());
+  }
+  const nextHandler = () => {
+    return setToday(prev => prev.clone().add(1, "month"));
+  }
 
   return (
     <CalnderWrapper>
       <Header />
-      <Monitor today={today} />
+      <Monitor
+        today={today}
+        prevHandler={prevHandler}
+        todayHandler={todayHandler}
+        nextHandler={nextHandler}
+      />
       <CalendarGrid startDay={startDay} />
     </CalnderWrapper>
   );
