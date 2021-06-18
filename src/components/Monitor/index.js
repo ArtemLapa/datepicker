@@ -11,10 +11,13 @@ const DivWrapper = styled.div`
 `;
 
 const TextWrapper = styled.span`
-  font-size: 32px;
+  font-size: 24px;
   &:first-child {
     margin-right: 8px;
     font-weight: bold;
+  }
+  @media(min-width: 768px) {
+    font-size: 32px;
   }
 `;
 
