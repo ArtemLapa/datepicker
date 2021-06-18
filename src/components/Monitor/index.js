@@ -18,6 +18,11 @@ const TextWrapper = styled.span`
   }
 `;
 
+const ButtonsWrapper = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 const ButtonWrapper = styled.button`
   border: unset;
   background-color: #565759;
@@ -27,22 +32,24 @@ const ButtonWrapper = styled.button`
   color: #E6E6E6;
 `;
 
-/*const TodayBotton = styled(ButtonWrapper)`
+const TodayButton = styled(ButtonWrapper)`
+  padding-right: 16px;
+  padding-left: 16px;
+  font-weight: bold;
+`;
 
-`;*/
-
-const Monitor = () => {
+const Monitor = ({today}) => {
   return (
     <DivWrapper>
       <div>
-        <TextWrapper>June</TextWrapper>
-        <TextWrapper>2021</TextWrapper>
+        <TextWrapper>{today.format("MMMM")}</TextWrapper>
+        <TextWrapper>{today.format("YYYY")}</TextWrapper>
       </div>
-      <div>
+      <ButtonsWrapper>
         <ButtonWrapper> &lt; </ButtonWrapper>
-        <ButtonWrapper>Today</ButtonWrapper>
+        <TodayButton>Today</TodayButton>
         <ButtonWrapper> &gt; </ButtonWrapper>
-      </div>
+      </ButtonsWrapper>
     </DivWrapper>
   )
 }

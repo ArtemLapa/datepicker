@@ -1,8 +1,11 @@
 import React from "react";
+import Title from "../Title";
 
 const Header = () => {
   return (
-    <div>Header</div>
+    <div>
+      <Title />
+    </div>
   )
 }
 

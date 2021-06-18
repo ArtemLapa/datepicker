@@ -17,12 +17,14 @@ const CalnderWrapper = styled.div`
 
 function Index() {
   moment.updateLocale("eng", {week: {dow: 1}});
-  const startDay = moment().startOf("month").startOf("week");
+  const today = moment();
+  const startDay = today.clone().startOf("month").startOf("week");
+  // window.moment = moment;
 
   return (
     <CalnderWrapper>
       <Header />
-      <Monitor />
+      <Monitor today={today} />
       <CalendarGrid startDay={startDay} />
     </CalnderWrapper>
   );
