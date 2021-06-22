@@ -33,6 +33,7 @@ const CellWrapper = styled.div`
 const RowInCell = styled.div`
   display: flex;
   justify-content: ${props => props.justifyContent ? props.justifyContent : "flex-start"};
+  ${props => props.pr && `padding-right: ${props.pr * 8}px`};
 `;
 
 const DayWrapper = styled.div`
@@ -70,7 +71,9 @@ const CalendarGrid = ({startDay}) => {
       <GridWrapper isHeader>
         {[...Array(7)].map((_, i) => (
           <CellWrapper key={i} isHeader>
-            {i}
+            <RowInCell justifyContent={"flex-end"} pr={1}>
+              {moment().day(i + 1).format("ddd")}
+            </RowInCell>
           </CellWrapper>
         ))}
       </GridWrapper>
@@ -81,9 +84,7 @@ const CalendarGrid = ({startDay}) => {
               key={dayItem.unix()}
               isWeekend={dayItem.day() === 6 || dayItem.day() === 0}
             >
-              <RowInCell
-                justifyContent={"flex-end"}
-              >
+              <RowInCell justifyContent={"flex-end"}>
                 <DayWrapper>
                   {!isCurrentDay(dayItem) && dayItem.format("D")}
                   {isCurrentDay(dayItem) && <CurrentDay>{dayItem.format("D")}</CurrentDay>}
