@@ -1,0 +1,6 @@
+{
+  "events": [
+    {"id": 1, "title":  "First title", "description": "Data 1", "date": 1624352959},
+    {"id": 2, "title":  "Second title", "description": "Data 2", "date": 1624353959}
+  ]
+}

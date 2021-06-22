@@ -1,11 +1,11 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import moment from "moment";
 import styled from "styled-components";
 import Header from "../Header";
 import Monitor from "../Monitor";
 import CalendarGrid from "../CalendarGrid";
 
-const CalnderWrapper = styled.div`
+const CalenderWrapper = styled.div`
   border-radius: 8px;
   border-top: 1px solid #737374;
   border-left: 1px solid #46464B;
@@ -15,7 +15,7 @@ const CalnderWrapper = styled.div`
   overflow: hidden;
 `;
 
-function Index() {
+function App() {
   moment.updateLocale("eng", {week: {dow: 1}});
   // const today = moment();
   const [today, setToday] = useState(moment())
@@ -32,8 +32,19 @@ function Index() {
     return setToday(prev => prev.clone().add(1, "month"));
   }
 
+  const [events, setEvents] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:5000/events")
+      .then(res => res.json())
+      .then(res => {
+        console.log("Response", res);
+        setEvents(res);
+      })
+  }, []);
+  console.log(events)
+
   return (
-    <CalnderWrapper>
+    <CalenderWrapper>
       <Header />
       <Monitor
         today={today}
@@ -42,8 +53,8 @@ function Index() {
         nextHandler={nextHandler}
       />
       <CalendarGrid startDay={startDay} today={today} />
-    </CalnderWrapper>
+    </CalenderWrapper>
   );
 }
 
-export default Index;
+export default App;
