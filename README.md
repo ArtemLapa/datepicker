@@ -1,6 +1,6 @@
-# Getting Started with Create React Index
+## See live demo
 
-This project was bootstrapped with [Create React Index](https://github.com/facebook/create-react-app).
+[Live demo Task Manager](https://al-datepicker.netlify.app/)
 
 ## Available Scripts
 
